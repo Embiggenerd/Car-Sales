@@ -6,7 +6,7 @@ import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
-import { BUY_ITEM, REMOVE_ITEM} from './redux/constants'
+import { BUY_ITEM, REMOVE_ITEM } from './redux/constants'
 const App = () => {
   const car = useSelector(state => state.car)
   const additionalFeatures = useSelector(state => state.additionalFeatures)
@@ -14,7 +14,7 @@ const App = () => {
   const dispatch = useDispatch()
 
   const removeFeature = item => {
-    console.log('removeFeature invoked', item)
+    dispatch({ type: REMOVE_ITEM, payload: { item } })
   }
 
   const buyItem = item => {
