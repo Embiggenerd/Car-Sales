@@ -1,3 +1,5 @@
+import { BUY_ITEM, REMOVE_FEATURE } from '../constants'
+
 const initialState = {
     additionalPrice: 0,
     car: {
@@ -17,6 +19,18 @@ const initialState = {
 
 export const carReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case BUY_ITEM:
+            const newAdditionalPrice = state.additionalPrice + payload.item.price 
+            const newFeatures = [...state.car.features, payload.item]
+            return {
+                ...state,
+                car: {
+                    ...state.car,
+                    features: newFeatures
+                },
+                additionalPrice: newAdditionalPrice
+
+            }
         default:
             return state
     }
